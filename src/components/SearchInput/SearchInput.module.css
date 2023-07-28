@@ -1,0 +1,25 @@
+.input {
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background-color: transparent;
+  padding: 0.5rem;
+  padding-left: 2.6rem;
+  font-size: 2rem;
+  color: #fff;
+  width: 50rem;
+}
+
+.input::placeholder {
+  color: #fff;
+}
+
+.label {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
