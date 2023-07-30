@@ -7,17 +7,17 @@ import styles from "./SearchForm.module.css";
 
 type SearchpRrops = {
   title: string;
+  btnDisable: boolean;
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
 };
 
-export const SearchForm = ({ title, onSubmit}: SearchpRrops) => {
-
+export const SearchForm = ({ title, btnDisable, onSubmit }: SearchpRrops) => {
   return (
     <form onSubmit={(e) => onSubmit(e)} className={styles.form}>
       <h1 className={styles.title}>{title}</h1>
       <div className={styles.inputBox}>
         <SearchInput />
-        <Button type="search" text={CLICK_BTNS.search} />
+        <Button type="search" text={CLICK_BTNS.search} disabled={btnDisable} />
       </div>
     </form>
   );

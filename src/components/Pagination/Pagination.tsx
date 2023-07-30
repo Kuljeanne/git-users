@@ -37,7 +37,7 @@ export const Pagination = ({
         text="<"
       />
       {nav && (
-        <span className={styles.navigation}>
+        <span className={styles.navigation} data-testid="nav">
           {nav.current} / {nav.total}
         </span>
       )}

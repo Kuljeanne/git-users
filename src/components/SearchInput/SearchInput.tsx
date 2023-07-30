@@ -27,6 +27,8 @@ export const SearchInput = ({ ...classes }: InputProps) => {
         value={value}
         placeholder="Поиск..."
         onChange={(e) => handleInput(e)}
+        data-testid="input-search"
+
       />
     </label>
   );

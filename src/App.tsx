@@ -82,6 +82,7 @@ function App() {
     >
       <SearchForm
         title="Поиск пользователей GITHUB"
+        btnDisable={isLoading}
         onSubmit={(e) => handleSubmit(e)}
       />
       <RadioBtnGroup
