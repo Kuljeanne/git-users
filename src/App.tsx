@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useCallback, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 import ErrorBlock from "./components/ErrorBlock";
 import NotFound from "./components/NotFound";
@@ -6,6 +6,7 @@ import Pagination from "./components/Pagination";
 import RadioBtnGroup from "./components/RadioBtnGroup";
 import SearchForm from "./components/SearchBlock";
 import Spinner from "./components/Spinner";
+import StartBlock from "./components/StartBlock";
 import UsersLists from "./components/UsersLists";
 import { USER_RESPONSE } from "./utils/constants";
 
@@ -43,20 +44,20 @@ function App() {
     }
   };
 
-  const handleNextPageClick = useCallback(() => {
+  const handleNextPageClick = () => {
     const current = page;
     const next = current + 1;
     const total = data ? getTotalPageCount(data?.length) : current;
 
     setPage(next <= total ? next : current);
-  }, [page, data]);
+  }
 
-  const handlePrevPageClick = useCallback(() => {
+  const handlePrevPageClick = () => {
     const current = page;
     const prev = current - 1;
 
     setPage(prev > 0 ? prev : current);
-  }, [page]);
+  }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -64,11 +65,11 @@ function App() {
     const searchString = String(formData.get("search"));
     setLoading(true);
     fetchData(searchString, sort);
+    setPage(1)
   };
 
   const handleSortChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSort(e.target.value);
-    if (data) setData([...data].reverse());
   };
 
   return (
@@ -90,38 +91,31 @@ function App() {
         checked={sort}
         onChange={(e) => handleSortChange(e)}
       />
-      <div
-        style={{
-          flexGrow: "1",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-        }}
-      >
-        {isLoading ? (
-          <Spinner />
-        ) : error ? (
-          <ErrorBlock text={error} />
-        ) : data && data.length > 0 ? (
-          <>
-            <UsersLists users={data} page={page} perPage={ROWS_PER_PAGE} />
-            <Pagination
-              onNextPageClick={handleNextPageClick}
-              onPrevPageClick={handlePrevPageClick}
-              disable={{
-                left: page === 1,
-                right: page === getTotalPageCount(data.length),
-              }}
-              nav={{
-                current: page,
-                total: getTotalPageCount(data.length),
-              }}
-            />
-          </>
-        ) : (
-          <NotFound />
-        )}
-      </div>
+      {isLoading ? (
+        <Spinner />
+      ) : error ? (
+        <ErrorBlock text={error} />
+      ) : data && data.length > 0 ? (
+        <>
+          <UsersLists users={data} page={page} perPage={ROWS_PER_PAGE} />
+          <Pagination
+            onNextPageClick={handleNextPageClick}
+            onPrevPageClick={handlePrevPageClick}
+            disable={{
+              left: page === 1,
+              right: page === getTotalPageCount(data.length),
+            }}
+            nav={{
+              current: page,
+              total: getTotalPageCount(data.length),
+            }}
+          />
+        </>
+      ) : data && data.length === 0 ? (
+        <NotFound />
+      ) : (
+        <StartBlock />
+      )}
     </div>
   );
 }
