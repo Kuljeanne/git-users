@@ -1,4 +1,3 @@
-import cn from "classnames";
 import { FormEvent } from "react";
 
 import { CLICK_BTNS } from "../../utils/constants";
@@ -8,16 +7,13 @@ import styles from "./SearchForm.module.css";
 
 type SearchpRrops = {
   title: string;
-  inputPlaceholder: string;
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
-  classes?: string;
 };
 
-export const SearchForm = ({ title, onSubmit, ...classes }: SearchpRrops) => {
-  const cls = cn(styles.form, classes);
+export const SearchForm = ({ title, onSubmit}: SearchpRrops) => {
 
   return (
-    <form onSubmit={(e) => onSubmit(e)} className={cls}>
+    <form onSubmit={(e) => onSubmit(e)} className={styles.form}>
       <h1 className={styles.title}>{title}</h1>
       <div className={styles.inputBox}>
         <SearchInput />

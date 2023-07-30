@@ -7,6 +7,7 @@ type RadioBtnProps = {
   value: string;
   text: string;
   index: number;
+  checked:boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -15,6 +16,7 @@ export const RadioBtn = ({
   value,
   text,
   index,
+  checked,
   onChange,
 }: RadioBtnProps) => {
   return (
@@ -25,6 +27,7 @@ export const RadioBtn = ({
         value={value}
         className={styles.input}
         id={`${index}`}
+        checked={checked}
         onChange={(e) => onChange(e)}
       />
       {text}

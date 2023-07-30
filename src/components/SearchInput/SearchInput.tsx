@@ -23,6 +23,7 @@ export const SearchInput = ({ ...classes }: InputProps) => {
       </div>
       <input
         className={cls}
+        name="search"
         value={value}
         placeholder="Поиск..."
         onChange={(e) => handleInput(e)}

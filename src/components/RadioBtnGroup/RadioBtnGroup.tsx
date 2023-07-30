@@ -6,10 +6,11 @@ import styles from "./RadioBtnGroup.module.css";
 
 type RadioGroupProps = {
   name: string;
+  checked: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const RadioBtnGroup = ({ name, onChange }: RadioGroupProps) => {
+export const RadioBtnGroup = ({ name, checked, onChange }: RadioGroupProps) => {
   return (
     <div className={styles.group}>
       {SORT_BTNS.map((btn, index) => (
@@ -19,6 +20,7 @@ export const RadioBtnGroup = ({ name, onChange }: RadioGroupProps) => {
           text={btn[1]}
           value={btn[0]}
           name={name}
+          checked = {btn[0] === checked}
           onChange={onChange}
         />
       ))}
