@@ -21,8 +21,8 @@ export type USER_RESPONSE = {
 };
 
 export const SORT_BTNS = [
-  ["bigger", "По возрастанию"],
-  ["less", "По убыванию"],
+  ["desc", "По возрастанию"],
+  ["asc", "По убыванию"],
 ];
 
 export const CLICK_BTNS = {

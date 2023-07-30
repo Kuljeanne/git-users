@@ -1,5 +1,3 @@
-import React from "react";
-
 import Button from "../Button";
 import styles from "./Pagination.module.css";
 
@@ -16,7 +14,7 @@ type PaginationProps = {
   } | null;
 };
 
-const Pagination = ({
+export const Pagination = ({
   nav = null,
   disable,
   onNextPageClick,
@@ -53,6 +51,3 @@ const Pagination = ({
     </div>
   );
 };
-
-// eslint-disable-next-line react-refresh/only-export-components
-export default React.memo(Pagination);

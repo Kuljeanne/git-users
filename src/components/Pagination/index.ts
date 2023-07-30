@@ -1,3 +1,5 @@
-import  Pagination  from "./Pagination";
+import { memo } from "react";
 
-export default Pagination
+import { Pagination } from "./Pagination";
+
+export default memo(Pagination);

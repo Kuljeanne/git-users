@@ -1,10 +1,4 @@
-import {
-  ChangeEvent,
-  FormEvent,
-  useCallback,
-  //useEffect,
-  useState,
-} from "react";
+import { ChangeEvent, FormEvent, useCallback, useState } from "react";
 
 import ErrorBlock from "./components/ErrorBlock";
 import NotFound from "./components/NotFound";
@@ -12,7 +6,7 @@ import Pagination from "./components/Pagination";
 import RadioBtnGroup from "./components/RadioBtnGroup";
 import SearchForm from "./components/SearchBlock";
 import Spinner from "./components/Spinner";
-import UserCard from "./components/UserCard";
+import UsersLists from "./components/UsersLists";
 import { USER_RESPONSE } from "./utils/constants";
 
 const ROWS_PER_PAGE = 6;
@@ -22,22 +16,21 @@ const getTotalPageCount = (rowCount: number): number =>
 
 function App() {
   const [data, setData] = useState<USER_RESPONSE[] | null>(null);
-  const [sort, setSort] = useState<string>("bigger");
+  const [sort, setSort] = useState<string>("desc");
   const [page, setPage] = useState(1);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchData = async (searchString: string) => {
+  const fetchData = async (searchString: string, sort: string) => {
     setLoading(true);
     setError(null);
 
     try {
       const response = await fetch(
-        `https://api.github.com/search/users?q=${searchString}&sort=repositories`
+        `https://api.github.com/search/users?q=${searchString}&sort=repositories&order=${sort}`
       );
       const data = await response.json();
-      if (sort === "less") setData([...data.items].reverse());
-      if (sort === "bigger") setData(data.items);
+      setData(data.items);
     } catch (error) {
       setError(
         error instanceof Error
@@ -70,13 +63,12 @@ function App() {
     const formData = new FormData(e.target as HTMLFormElement);
     const searchString = String(formData.get("search"));
     setLoading(true);
-    fetchData(searchString);
+    fetchData(searchString, sort);
   };
 
   const handleSortChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSort(e.target.value);
-
-    // если прошлое и настоящее равзные значения то сдлеать реверс
+    if (data) setData([...data].reverse());
   };
 
   return (
@@ -97,34 +89,38 @@ function App() {
         checked={sort}
         onChange={(e) => handleSortChange(e)}
       />
-      <div style={{ flexGrow: "1" }}>
+      <div
+        style={{
+          flexGrow: "1",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
         {isLoading ? (
           <Spinner />
         ) : error ? (
           <ErrorBlock text={error} />
         ) : data && data.length > 0 ? (
-          data.map(({ id, login, avatar_url, html_url }) => (
-            <UserCard
-              key={id}
-              login={login}
-              avatar={avatar_url}
-              linkHTML={html_url}
+          <>
+            <UsersLists users={data} page={page} perPage={ROWS_PER_PAGE} />
+            <Pagination
+              onNextPageClick={handleNextPageClick}
+              onPrevPageClick={handlePrevPageClick}
+              disable={{
+                left: page === 1,
+                right: page === getTotalPageCount(data.length),
+              }}
+              nav={{
+                current: page,
+                total: getTotalPageCount(data.length),
+              }}
             />
-          ))
+          </>
         ) : (
           <NotFound />
         )}
       </div>
-
-      <Pagination
-        onNextPageClick={handleNextPageClick}
-        onPrevPageClick={handlePrevPageClick}
-        disable={{
-          left: page === 1,
-          right: page === getTotalPageCount(data?.length || 1),
-        }}
-        nav={{ current: page, total: getTotalPageCount(data?.length || 1) }}
-      />
     </div>
   );
 }
