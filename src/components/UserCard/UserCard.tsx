@@ -21,6 +21,7 @@ export const UserCard = ({ login, avatar, linkHTML }: UserCardType) => {
         text={isInfoVisible ? "Скрыть" : "Показать больше"}
         type="userInfo"
         onClick={handleClick}
+        disabled={false}
         className={styles.btn}
       />
       {isInfoVisible ? (
