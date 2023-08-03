@@ -19,13 +19,3 @@ export type USER_RESPONSE = {
   site_admin: string;
   score: string;
 };
-
-export const SORT_BTNS = [
-  ["desc", "По возрастанию"],
-  ["asc", "По убыванию"],
-];
-
-export const CLICK_BTNS = {
-  search: "Искать",
-  userInfo: "Подробнее",
-};

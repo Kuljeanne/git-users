@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { CLICK_BTNS } from "../../enums";
 import Button from "../Button";
 import styles from "./UsderCard.module.css";
 
@@ -18,7 +19,7 @@ export const UserCard = ({ login, avatar, linkHTML }: UserCardType) => {
     <div className={styles.card}>
       <span className={styles.login}>{login}</span>
       <Button
-        text={isInfoVisible ? "Скрыть" : "Показать больше"}
+        text={isInfoVisible ? CLICK_BTNS.hideUserInfo : CLICK_BTNS.showUserInfo}
         type="userInfo"
         onClick={handleClick}
         disabled={false}
@@ -28,9 +29,9 @@ export const UserCard = ({ login, avatar, linkHTML }: UserCardType) => {
         <div className={styles.moreInfo}>
           <img src={avatar} alt={login} className={styles.img} />
           <p className={styles.repo}>
-            Перейти в репозиторий{" "}
+            Открыть репозиторий в новой вкладке:{' '}
             <a href={linkHTML} target="_blank">
-              по ссылке
+              {login}
             </a>
           </p>
         </div>
