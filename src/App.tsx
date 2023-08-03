@@ -8,7 +8,7 @@ import SearchForm from "./components/SearchBlock";
 import Spinner from "./components/Spinner";
 import StartBlock from "./components/StartBlock";
 import UsersLists from "./components/UsersLists";
-import { USER_RESPONSE } from "./utils/constants";
+import { USER_RESPONSE } from "./constants";
 
 const ROWS_PER_PAGE = 6;
 
@@ -50,14 +50,14 @@ function App() {
     const total = data ? getTotalPageCount(data?.length) : current;
 
     setPage(next <= total ? next : current);
-  }
+  };
 
   const handlePrevPageClick = () => {
     const current = page;
     const prev = current - 1;
 
     setPage(prev > 0 ? prev : current);
-  }
+  };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -65,7 +65,7 @@ function App() {
     const searchString = String(formData.get("search"));
     setLoading(true);
     fetchData(searchString, sort);
-    setPage(1)
+    setPage(1);
   };
 
   const handleSortChange = (e: ChangeEvent<HTMLInputElement>) => {

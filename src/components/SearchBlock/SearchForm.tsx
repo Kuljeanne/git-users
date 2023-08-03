@@ -1,6 +1,6 @@
 import { FormEvent } from "react";
 
-import { CLICK_BTNS } from "../../utils/constants";
+import { CLICK_BTNS } from "../../constants";
 import Button from "../Button";
 import SearchInput from "../SearchInput";
 import styles from "./SearchForm.module.css";

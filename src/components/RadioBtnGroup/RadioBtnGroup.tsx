@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 
-import { SORT_BTNS } from "../../utils/constants";
+import { SORT_BTNS } from "../../constants";
 import RadioBtn from "../RadioBtn";
 import styles from "./RadioBtnGroup.module.css";
 
@@ -20,7 +20,7 @@ export const RadioBtnGroup = ({ name, checked, onChange }: RadioGroupProps) => {
           text={btn[1]}
           value={btn[0]}
           name={name}
-          checked = {btn[0] === checked}
+          checked={btn[0] === checked}
           onChange={onChange}
         />
       ))}
