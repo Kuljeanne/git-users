@@ -1,3 +1,4 @@
+import { CLICK_BTNS } from "../../enums";
 import Button from "../Button";
 import styles from "./Pagination.module.css";
 
@@ -34,7 +35,7 @@ export const Pagination = ({
         className={styles.arrow}
         onClick={handlePrevPageClick}
         disabled={disable.left}
-        text="<"
+        text={CLICK_BTNS.pagination_prev}
       />
       {nav && (
         <div className={styles.navigation} data-testid="nav">
@@ -46,7 +47,7 @@ export const Pagination = ({
         className={styles.arrow}
         onClick={handleNextPageClick}
         disabled={disable.right}
-        text=">"
+        text={CLICK_BTNS.pagination_next}
       />
     </div>
   );

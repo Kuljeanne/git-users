@@ -11,9 +11,10 @@ type RadioGroupProps = {
 };
 
 export const RadioBtnGroup = ({ name, checked, onChange }: RadioGroupProps) => {
+  const btns = Object.entries(SORT_BTNS)
   return (
     <div className={styles.group}>
-      {SORT_BTNS.map((btn, index) => (
+      {btns.map((btn, index) => (
         <RadioBtn
           key={index}
           index={index}
