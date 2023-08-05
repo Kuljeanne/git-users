@@ -5,7 +5,7 @@ export const Container = styled.div`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  background-image: url("public/img/error.jpg");
+  background-image: url("./img/error.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
