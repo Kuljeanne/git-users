@@ -1,35 +1,27 @@
-import cn from "classnames";
 import { ChangeEvent, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
-import styles from "./SearchInput.module.css";
+import * as S from "./SearchInput.style";
 
-type InputProps = {
-  classes?: string;
-};
-
-export const SearchInput = ({ ...classes }: InputProps) => {
+export const SearchInput = () => {
   const [value, setValue] = useState("");
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
-  const cls = cn(styles.input, classes);
   return (
-    <label className={styles.label}>
-      <div className={styles.icon}>
+    <S.Label>
+      <S.Icon>
         <FaSearch color="#fff" size="2rem" />
-      </div>
-      <input
-        className={cls}
+      </S.Icon>
+      <S.Input
         name="search"
         value={value}
         placeholder="Поиск..."
         onChange={(e) => handleInput(e)}
         data-testid="input-search"
-
       />
-    </label>
+    </S.Label>
   );
 };

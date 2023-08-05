@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 
 import { SORT_BTNS } from "../../constants";
 import RadioBtn from "../RadioBtn";
-import styles from "./RadioBtnGroup.module.css";
+import * as S from "./RadioBtnGroup.style";
 
 type RadioGroupProps = {
   name: string;
@@ -11,9 +11,9 @@ type RadioGroupProps = {
 };
 
 export const RadioBtnGroup = ({ name, checked, onChange }: RadioGroupProps) => {
-  const btns = Object.entries(SORT_BTNS)
+  const btns = Object.entries(SORT_BTNS);
   return (
-    <div className={styles.group}>
+    <S.Group>
       {btns.map((btn, index) => (
         <RadioBtn
           key={index}
@@ -25,6 +25,6 @@ export const RadioBtnGroup = ({ name, checked, onChange }: RadioGroupProps) => {
           onChange={onChange}
         />
       ))}
-    </div>
+    </S.Group>
   );
 };

@@ -4,7 +4,7 @@ import { ROWS_PER_PAGE } from "../../constants";
 import { USER_RESPONSE } from "../../types";
 import Pagination from "../Pagination";
 import UserCard from "../UserCard";
-import styles from "./PaginatedUsersList.module.css";
+import * as S from "./PaginatedUsersList.style";
 
 type UserListsProps = {
   users: USER_RESPONSE[];
@@ -37,7 +37,7 @@ export const PaginatedUsersLists = ({ users }: UserListsProps) => {
 
   return (
     <>
-      <div className={styles.container}>
+      <S.Container>
         {paginated.map(({ id, login, avatar_url, html_url }) => (
           <UserCard
             key={id}
@@ -46,7 +46,7 @@ export const PaginatedUsersLists = ({ users }: UserListsProps) => {
             linkHTML={html_url}
           />
         ))}
-      </div>
+      </S.Container>
       <Pagination
         onNextPageClick={handleNextPageClick}
         onPrevPageClick={handlePrevPageClick}

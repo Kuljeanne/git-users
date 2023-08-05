@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { CLICK_BTNS } from "../../enums";
 import Button from "../Button";
-import styles from "./UsderCard.module.css";
+import * as S from "./UserCard.style";
 
 type UserCardType = {
   login: string;
@@ -16,26 +16,25 @@ export const UserCard = ({ login, avatar, linkHTML }: UserCardType) => {
     setIsInfoVisible(!isInfoVisible);
   };
   return (
-    <div className={styles.card}>
-      <span className={styles.login}>{login}</span>
+    <S.Card>
+      <S.Login>{login}</S.Login>
       <Button
         text={isInfoVisible ? CLICK_BTNS.hideUserInfo : CLICK_BTNS.showUserInfo}
         type="userInfo"
         onClick={handleClick}
         disabled={false}
-        className={styles.btn}
       />
       {isInfoVisible ? (
-        <div className={styles.moreInfo}>
-          <img src={avatar} alt={login} className={styles.img} />
-          <p className={styles.repo}>
-            Открыть репозиторий в новой вкладке:{' '}
+        <S.MoreInfo>
+          <S.Img  src={avatar} alt={login} ></S.Img>
+          <S.Repo>
+            Открыть репозиторий в новой вкладке:{" "}
             <a href={linkHTML} target="_blank">
               {login}
             </a>
-          </p>
-        </div>
+          </S.Repo>
+        </S.MoreInfo>
       ) : null}
-    </div>
+    </S.Card>
   );
 };

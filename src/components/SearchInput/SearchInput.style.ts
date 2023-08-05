@@ -1,4 +1,6 @@
-.input {
+import { styled } from "styled-components";
+
+export const Input = styled.input`
   border: none;
   border-bottom: 1px solid #fff;
   outline: none;
@@ -8,18 +10,17 @@
   font-size: 2rem;
   color: #fff;
   width: 50rem;
-}
+  &::placeholder {
+    color: #fff;
+  }
+`;
 
-.input::placeholder {
-  color: #fff;
-}
-
-.label {
+export const Label = styled.label`
   position: relative;
-}
+`;
 
-.icon {
+export const Icon = styled.div`
   position: absolute;
   padding: 0.5rem 0;
   cursor: pointer;
-}
+`;

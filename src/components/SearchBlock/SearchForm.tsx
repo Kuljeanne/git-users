@@ -3,7 +3,7 @@ import { FormEvent } from "react";
 import { CLICK_BTNS } from "../../enums";
 import Button from "../Button";
 import SearchInput from "../SearchInput";
-import styles from "./SearchForm.module.css";
+import * as S from './SearchForm.style'
 
 type SearchpRrops = {
   title: string;
@@ -13,12 +13,12 @@ type SearchpRrops = {
 
 export const SearchForm = ({ title, btnDisable, onSubmit }: SearchpRrops) => {
   return (
-    <form onSubmit={(e) => onSubmit(e)} className={styles.form}>
-      <h1 className={styles.title}>{title}</h1>
-      <div className={styles.inputBox}>
+    <form onSubmit={(e) => onSubmit(e)}>
+      <S.Title>{title}</S.Title>
+      <S.InputBox>
         <SearchInput />
         <Button type="search" text={CLICK_BTNS.search} disabled={btnDisable} />
-      </div>
+      </S.InputBox>
     </form>
   );
 };

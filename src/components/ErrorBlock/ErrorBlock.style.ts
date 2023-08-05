@@ -1,22 +1,24 @@
-.container {
-  flex-grow: 1;          
+import { styled } from "styled-components";
+
+export const Container = styled.div`
+  flex-grow: 1;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  background-image: url('../../assets/img/error.jpg');
+  background-image: url("src/assets/img/error.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   padding: 1.5rem;
-}
+`;
 
-.mist {
+export const Mist = styled.p` 
   font-size: 1.6rem;
   margin-bottom: 5rem;
-}
+`;
 
-.quote {
+export const Quote = styled.p` 
   font-size: 1.4rem;
   font-style: italic;
   max-width: 30rem;
-}
+`;

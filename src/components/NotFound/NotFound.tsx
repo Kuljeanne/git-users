@@ -1,9 +1,9 @@
-import styles from "./NotFound.module.css";
+import * as S from "./NotFound.style";
 
 export const NotFound = () => {
   return (
-    <div className={styles.container}>
+    <S.Container>
       <p>Ничего не найдено</p>
-    </div>
+    </S.Container>
   );
 };
