@@ -21,6 +21,7 @@ export const SearchInput = () => {
         placeholder="Поиск..."
         onChange={(e) => handleInput(e)}
         data-testid="input-search"
+        required
       />
     </S.Label>
   );
