@@ -1,13 +1,10 @@
-import cn from "classnames";
-
-import styles from "./Button.module.css";
+import * as S from "./Button.style";
 
 type BtnProps = {
   type: "search" | "userInfo" | "pagination";
   text: string;
   onClick?: () => void;
   disabled: boolean;
-  className?: string;
 };
 
 export const Button = ({
@@ -15,18 +12,16 @@ export const Button = ({
   text,
   onClick,
   disabled,
-  className,
 }: BtnProps) => {
-  const cls = cn(styles.btn, styles[type], className);
 
   return (
-    <button
-      className={cls}
+    <S.Btn
+      className={type}
       onClick={onClick}
       disabled={disabled}
       data-testid="pagination-check"
     >
       {text}
-    </button>
+    </S.Btn>
   );
 };

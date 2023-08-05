@@ -1,6 +1,6 @@
 import { CLICK_BTNS } from "../../enums";
 import Button from "../Button";
-import styles from "./Pagination.module.css";
+import * as S from "./Pagination.style";
 
 type PaginationProps = {
   onNextPageClick: () => void;
@@ -29,26 +29,24 @@ export const Pagination = ({
   };
 
   return (
-    <div className={styles.paginator}>
+    <S.Paginator>
       <Button
         type="pagination"
-        className={styles.arrow}
         onClick={handlePrevPageClick}
         disabled={disable.left}
         text={CLICK_BTNS.pagination_prev}
       />
       {nav && (
-        <div className={styles.navigation} data-testid="nav">
+        <S.Navigation data-testid="nav">
           <span>{nav.current}</span> / <span>{nav.total}</span>
-        </div>
+        </S.Navigation>
       )}
       <Button
         type="pagination"
-        className={styles.arrow}
         onClick={handleNextPageClick}
         disabled={disable.right}
         text={CLICK_BTNS.pagination_next}
       />
-    </div>
+    </S.Paginator>
   );
 };

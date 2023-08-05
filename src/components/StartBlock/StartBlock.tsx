@@ -1,8 +1,5 @@
-import styles from "./StartBlock.module.css";
+import * as S from "./StartBlock.style";
 
 export const StartBlock = () => {
-  return (
-    <div className={styles.container}>
-    </div>
-  );
+  return <S.Container></S.Container>;
 };

@@ -1,4 +1,4 @@
-import styles from "./ErrorBlock.module.css";
+import * as S from "./ErrorBlock.style";
 
 type ErrorProps = {
   text: string;
@@ -6,11 +6,11 @@ type ErrorProps = {
 
 export const ErrorBlock = ({ text }: ErrorProps) => {
   return (
-    <div className={styles.container}>
-      <p className={styles.mist}>Случилось такое: {text}</p>
-      <p className={styles.quote}>
+    <S.Container>
+      <S.Mist>Случилось такое: {text}</S.Mist>
+      <S.Quote>
         "Ошибки всегда прощаются, если есть смелость признать их." - Брюс Ли
-      </p>
-    </div>
+      </S.Quote>
+    </S.Container>
   );
 };

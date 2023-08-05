@@ -1,13 +1,13 @@
 import { ChangeEvent } from "react";
 
-import styles from "./RadioBtn.module.css";
+import * as S from "./RadioBtn.style";
 
 type RadioBtnProps = {
   name: string;
   value: string;
   text: string;
   index: number;
-  checked:boolean;
+  checked: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -20,17 +20,16 @@ export const RadioBtn = ({
   onChange,
 }: RadioBtnProps) => {
   return (
-    <label className={styles.label} htmlFor={`${index}`}>
-      <input
+    <S.Label htmlFor={`${index}`}>
+      <S.Input
         type="radio"
         name={name}
         value={value}
-        className={styles.input}
         id={`${index}`}
         checked={checked}
         onChange={(e) => onChange(e)}
       />
       {text}
-    </label>
+    </S.Label>
   );
 };

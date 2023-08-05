@@ -1,8 +1,10 @@
-.container {
+import { styled } from "styled-components";
+
+export const Container = styled.div`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  background-image: url('../../assets/img/start.png');
+  background-image: url('src/assets/img/start.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -12,4 +14,4 @@
   display: flex;
   justify-content: center;
   align-items: end;
-}
+`;
