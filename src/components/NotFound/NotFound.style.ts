@@ -4,7 +4,7 @@ export const Container = styled.div`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  background-image: url("../../assets/img/notfound.png");
+  background-image: url("public/img/notfound.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
