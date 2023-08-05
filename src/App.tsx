@@ -23,7 +23,11 @@ function App() {
       const response = await fetch(
         `https://api.github.com/search/users?q=${searchString}&sort=repositories&order=${sort}`
       );
+      if (response.status >= 400 && response.status <= 499) {
+        throw new Error('Что-то пошло не так, возможно введены некоректные данные');
+      }
       const data = await response.json();
+
       setData(data.items);
     } catch (error) {
       setError(
